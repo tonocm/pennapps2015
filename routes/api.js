@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
+var request = require("request");
 
 /* GET users listing. */
 router.get('/', function(req, res) {
@@ -11,13 +11,27 @@ router.get('/get/properties', function(req, res) {
   res.json({'name':'Wells Fargo Center', 'cost':'10,000', 'owner':'Comcast Spectacor'});
 });
 
-router.get('/get/db', function(req, res) {
+router.get('/get/venue', function(req, res) {
 
-//    https://foursquare.com/oauth2/authenticate?client_id=TJD25UZFTFKY0Q2AYNJUDCDKIEVYY25CTMLHO4AQYDQTK2NH&response_type=code
-//    https://foursquare.com/oauth2/authenticate?client_id=TJD25UZFTFKY0Q2AYNJUDCDKIEVYY25CTMLHO4AQYDQTK2NH&response_type=code&redirect_uri=https://google.com
+    if (req.query.search === undefined) {
+        res.send('Variable "to" not passed');
+    }
+    else if (req.query.near === undefined) {
+        res.send('Variable "message" not passed');
+    }
+    else {
+        var clientID = 'TJD25UZFTFKY0Q2AYNJUDCDKIEVYY25CTMLHO4AQYDQTK2NH';
+        var clientSecret = 'GF3SBUHKMSFWU5XYXTSW2MPD2BKIBL103PVAYZUZB1WECMJM&';
+        var query = req.query.search;
+        var near = req.query.near;
+        var foursquareRequest = 'https://api.foursquare.com/v2/venues/search?query=' + query + '&near=' + near + '&client_id= ' + clientID + '&client_secret=' + clientSecret + 'v=20150905';
 
+        request(foursquareRequest, function(error, response, body) {
+          console.log(body);
+        });
 
-    res.send('id: '/* + req.query.code*/);
+        res.send('testing');
+    }
 });
 
 module.exports = router;
