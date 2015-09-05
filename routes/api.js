@@ -4,6 +4,7 @@ var request = require("request");
 var clientID = 'TJD25UZFTFKY0Q2AYNJUDCDKIEVYY25CTMLHO4AQYDQTK2NH';
 var clientSecret = 'GF3SBUHKMSFWU5XYXTSW2MPD2BKIBL103PVAYZUZB1WECMJM&';
 var redirectURI = 'http://pennapps2015.cloudapp.net:3000/api/get/location/photos/render';
+var accessToken = 'F4WDV0ZNYAQDVXYNUASH1N4SOIP0425SCAK3PVKYB43IMK3M';
 router.get('/', function(req, res) {
   res.send('<h1>Scouter!</h1>');
 });
@@ -62,7 +63,7 @@ router.get('/get/location/photos', function(req, res){
                 res.send('No results found. Please try again');
             }
             else{
-                var photo_url = 'https://api.foursquare.com/v2/venues/' + body.venues[0].id + '/photos';
+                var photo_url = 'https://api.foursquare.com/v2/venues/photos' + body.venues[0].id + '?oauth_token=' + accessToken + '&v=20150905';
 
                 request(photo_url, function(error, response, body) {
                     res.json(JSON.parse(body));
