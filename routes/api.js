@@ -110,7 +110,6 @@ router.post('/post/location', function(req, res){
     var attrs = req.body.attributes;
 
     var location = {'lat':lat, 'long':long, 'title':title, 'description':desc, 'username':username, 'photos':photos, 'price':price, 'tags':tags, 'attributes':attrs};
-    console.log(location); //works
 
     request.post({url: elasticSearchURI, json: location}, function(error, response, body) {
     });
@@ -133,12 +132,25 @@ router.post('/post/user', function(req, res){
     var photo = req.body.photo;
 
     var user = {'first_name':first_name, 'last_name':last_name, 'email':email, 'phone':phone, 'address_1':address_1, 'address_2':address_2, 'bio':bio, 'username':username, 'photo':photo};
-    console.log(user); //works
 
     request.post({url: elasticSearchURI, json: user}, function(error, response, body) {
     });
 
     res.send(user);
+});
+
+router.get('/get/users', function(req, res){
+
+    var elasticSearchURI = 'http://localhost:9200/users/user/';
+    var selectAll = '{"query":{"match_all":{}}}';
+
+    request({url: elasticSearchURI, json: selectAll}, function(error, response, body) {
+
+        res.send(body);
+
+    });
+
+
 });
 
 
