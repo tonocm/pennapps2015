@@ -1,8 +1,12 @@
 var path = require('path');
+var env = require('node-env-file');
 var express = require('express');
 var logger = require('morgan');
 var parser = require('body-parser');
 var cors = require('cors');
+
+// Load environment vars
+env(__dirname + '/.env');
 
 var app = express();
 
