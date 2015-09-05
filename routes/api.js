@@ -148,7 +148,7 @@ router.get('/get/users', function(req, res){
 
         var arr = body.hits.hits; // this is an array
         console.log(arr);
-        res.json({"yay":"fml"});
+        res.send(arr);
 
     });
 
