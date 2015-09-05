@@ -58,8 +58,9 @@ router.get('/get/location/photos', function(req, res){
         var req_url = 'http://pennapps2015.cloudapp.net:3000/api/get/location?name=' + name + '&near=' + near;
 
         request(req_url, function(error, response, body) {
-            console.log(response);
-            //response = JSON.parse(response);
+            console.log(typeof(response));
+            response = JSON.parse(response);
+            console.log(typeof(response));
             if (response.venues[0].id === undefined){
                 res.send('No results found. Please try again');
             }
