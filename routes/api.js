@@ -77,7 +77,7 @@ router.get('/get/location/photos', function(req, res){
 router.get('/get/location/photos/render', function(req, res){
     var token = req.query.access_token;
 
-    var type = window.location.hash.slice(1);
+    //var type = window.location.hash.slice(1);
 
     res.send(req.url);
 });
