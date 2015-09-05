@@ -72,10 +72,11 @@ router.get('/get/location/photos', function(req, res){
 
                     //var bod = JSON.parse(body);
                     var items = JSON.parse(body).response.photos.items;
-
+                    var outie = '';
+                    var samplePhoto = '';
                     for(i=0; i < items.length; i++){
                         samplePhoto = items[i].prefix + items[i].width + 'x' + items[i].height + items[i].suffix;
-                        outie = outie + '<img src=' + samplePhoto + ' height=' + items[i].height + ' width=' + items[i].width + '>\n'
+                        outie = outie + '<img src=' + samplePhoto + ' height=' + items[i].height + ' width=' + items[i].width + '>\n';
                     }
 
                     res.send(outie);
