@@ -113,10 +113,32 @@ router.post('/post/location', function(req, res){
     console.log(location); //works
 
     request.post({url: elasticSearchURI, json: location}, function(error, response, body) {
-        console.log(body);
     });
 
     res.send(location);
+});
+
+router.post('/post/user', function(req, res){
+
+    var elasticSearchURI = 'http://localhost:9200/users/user/';
+
+    var first_name = req.body.first_name;
+    var last_name = req.body.last_name;
+    var email = req.body.email;
+    var phone = req.body.phone;
+    var address_1 = req.body.address_1;
+    var address_2 = req.body.address_2;
+    var bio = req.body.bio;
+    var username = req.body.username;
+    var photo = req.body.photo;
+
+    var user = {'first_name':first_name, 'last_name':last_name, 'email':email, 'phone':phone, 'address_1':address_1, 'address_2':address_2, 'bio':bio, 'username':username, 'photo':photo};
+    console.log(user); //works
+
+    request.post({url: elasticSearchURI, json: user}, function(error, response, body) {
+    });
+
+    res.send(user);
 });
 
 
