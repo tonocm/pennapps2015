@@ -79,7 +79,7 @@ router.get('/get/location/photos/render', function(req, res){
 
     var type = window.location.hash.slice(1);
 
-    res.send(type);
+    res.send(req.url);
 });
 
 module.exports = router;
