@@ -147,13 +147,22 @@ router.get('/get/users', function(req, res){
     request.post({url: elasticSearchURI, json: selectAll}, function(error, response, body) {
 
         var arr = body.hits.hits; // this is an array
-        console.log(arr);
         res.send(arr);
-
     });
-
 
 });
 
+router.get('/get/locations', function(req, res){
+
+    var elasticSearchURI = 'http://localhost:9200/locations/location/_search';
+    var selectAll = {'query':{'match_all':{}}};
+
+    request.post({url: elasticSearchURI, json: selectAll}, function(error, response, body) {
+
+        var arr = body.hits.hits; // this is an array
+        res.send(arr);
+    });
+
+});
 
 module.exports = router;
