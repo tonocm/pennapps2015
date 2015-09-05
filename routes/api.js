@@ -14,10 +14,10 @@ router.get('/get/properties', function(req, res) {
 router.get('/get/venue', function(req, res) {
 
     if (req.query.search === undefined) {
-        res.send('Variable "to" not passed');
+        res.send('Variable "search" not passed');
     }
     else if (req.query.near === undefined) {
-        res.send('Variable "message" not passed');
+        res.send('Variable "near" not passed');
     }
     else {
         var clientID = 'TJD25UZFTFKY0Q2AYNJUDCDKIEVYY25CTMLHO4AQYDQTK2NH';
@@ -27,10 +27,10 @@ router.get('/get/venue', function(req, res) {
         var foursquareRequest = 'https://api.foursquare.com/v2/venues/search?query=' + query + '&near=' + near + '&client_id= ' + clientID + '&client_secret=' + clientSecret + 'v=20150905';
 
         request(foursquareRequest, function(error, response, body) {
-          console.log(body);
+          res.send(body);
         });
 
-        res.send('testing');
+        // res.send('testing');
     }
 });
 
