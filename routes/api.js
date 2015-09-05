@@ -96,7 +96,24 @@ router.get('/get/location/photos/render', function(req, res){
 });
 
 router.post('/post/location', function(req, res){
-    console.log(req.body.name);
+
+    var elasticSearchURI = 'http://localhost:9200/locations/location/';
+
+    var lat = req.body.lat;
+    var long = req.body.long;
+    var title = req.body.title;
+    var desc = req.body.description;
+    var username = req.body.username;
+    var photos = req.body.photos;
+    var price = req.body.price;
+    var tags = req.body.tags;
+    var attrs = req.body.attributes;
+
+    var location = {'lat':lat, 'long':long, 'title':title, 'description':desc, 'username':username, 'photos':photos, 'price':price, 'tags':tags, 'attributes':attrs};
+
+    request.post({url: elasticSearchURI, body: location}, function(error, response, body) {
+        console.log(body);
+    });
     res.send(req.body.name);
 });
 
