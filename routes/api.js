@@ -110,7 +110,7 @@ router.post('/post/location', function(req, res){
     var attrs = req.body.attributes;
 
     var location = {'lat':lat, 'long':long, 'title':title, 'description':desc, 'username':username, 'photos':photos, 'price':price, 'tags':tags, 'attributes':attrs};
-
+    console.log(location);
     request.post({url: elasticSearchURI, body: location}, function(error, response, body) {
         console.log(body);
     });
