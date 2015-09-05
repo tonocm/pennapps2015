@@ -74,7 +74,7 @@ router.get('/get/location/photos', function(req, res){
                     var items = JSON.parse(body).response.photos.items;
 
                     var samplePhoto = items[0].prefix + items[0].width + 'x' + items[0].height + items[0].suffix;
-                    var outie = '<img src=' + samplePhoto + ' height=' items[0].height + ' width=' + items[0].width + '>'
+                    var outie = '<img src=' + samplePhoto + ' height=' + items[0].height + ' width=' + items[0].width + '>'
                     res.send(outie);
                     //res.json(JSON.parse(body));
                 });
