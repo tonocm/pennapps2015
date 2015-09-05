@@ -54,7 +54,7 @@ router.get('/get/location/photos', function(req, res){
     else {
         var name = req.query.name;
         var near = req.query.near;
-        var req_url = 'http://pennapps2015.cloudapp.net:3000/api/get/location?name=' name '&near='+ near;
+        var req_url = 'http://pennapps2015.cloudapp.net:3000/api/get/location?name=' + name + '&near=' + near;
 
         request(req_url, function(error, response, body) {
             body = JSON.parse(body)
