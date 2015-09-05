@@ -148,7 +148,7 @@ router.get('/get/users', function(req, res){
         console.log(response);
         console.log(body);
         //res.json(JSON.parse(body));
-        res.json("yay":"fml");
+        res.json({"yay":"fml"});
 
     });
 
