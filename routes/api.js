@@ -66,7 +66,7 @@ router.get('/get/location/photos', function(req, res){
                 res.send('No results found. Please try again');
             }
             else{
-                var photo_url = 'https://api.foursquare.com/v2/venues/' + first_venue.id + '/photos?oauth_token=' + accessToken + '&v=20150905'';
+                var photo_url = 'https://api.foursquare.com/v2/venues/' + first_venue.id + '/photos?oauth_token=' + accessToken + '&v=20150905';
 
                 request(photo_url, function(error, response, body) {
                     res.json(JSON.parse(body));
