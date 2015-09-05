@@ -142,7 +142,7 @@ router.post('/post/user', function(req, res){
 router.get('/get/users', function(req, res){
 
     var elasticSearchURI = 'http://localhost:9200/users/user/_search';
-    var selectAll = '{"query":{"match_all":{}}}';
+    var selectAll = {'query':{'match_all':{}}};
 
     request({url: elasticSearchURI, json: selectAll}, function(error, response, body) {
         console.log(response);
