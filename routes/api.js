@@ -66,7 +66,7 @@ router.get('/get/location/photos', function(req, res){
 
                 request(photo_url, function(error, response, body) {
                     res.json(JSON.parse(body));
-                }
+                });
 //                res.json(JSON.parse(body));
             }
         });
