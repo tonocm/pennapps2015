@@ -80,9 +80,7 @@ router.get('/get/location/photos', function(req, res){
                     }
 
                     res.send(outie);
-                    //res.json(JSON.parse(body));
                 });
-//                res.json(JSON.parse(body));
             }
         });
     }
@@ -96,5 +94,10 @@ router.get('/get/location/photos/render', function(req, res){
 
     res.send(req.url);
 });
+
+router.post('/post/location', function(req, res){
+    res.send(req.body.name);
+});
+
 
 module.exports = router;
