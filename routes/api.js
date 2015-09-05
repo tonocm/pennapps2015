@@ -9,11 +9,6 @@ router.get('/', function(req, res) {
   res.send('<h1>Scouter!</h1>');
 });
 
-router.get('/get/properties', function(req, res) {
-  res.json({'name':'Wells Fargo Center', 'cost':'10,000', 'owner':'Comcast Spectacor'});
-});
-
-
 router.get('/get/authentication', function(req, res) {
     var get_oauth = 'https://foursquare.com/oauth2/authenticate?client_id=' + clientID + '&response_type=token&redirect_uri=' + redirectURI;
     res.redirect(get_oauth);
