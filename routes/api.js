@@ -147,7 +147,8 @@ router.get('/get/users', function(req, res){
     request.post({url: elasticSearchURI, json: selectAll}, function(error, response, body) {
         console.log(response);
         console.log(body);
-        res.json(JSON.parse(body));
+        //res.json(JSON.parse(body));
+        res.json("yay":"fml");
 
     });
 
