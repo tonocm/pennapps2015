@@ -1,7 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test');
 
 
 /* GET users listing. */
@@ -14,11 +12,7 @@ router.get('/get/properties', function(req, res) {
 });
 
 router.get('/get/db', function(req, res) {
-  var db = mongoose.connection;
-  db.on('error', console.error.bind(console, 'connection error:'));
-  db.once('open', function (callback) {
     res.send("working!");
-  });
 });
 
 module.exports = router;
