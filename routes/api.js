@@ -9,11 +9,6 @@ router.get('/', function(req, res) {
   res.send('<h1>Scouter!</h1>');
 });
 
-router.get('/get/properties', function(req, res) {
-  res.json({'name':'Wells Fargo Center', 'cost':'10,000', 'owner':'Comcast Spectacor'});
-});
-
-
 router.get('/get/authentication', function(req, res) {
     var get_oauth = 'https://foursquare.com/oauth2/authenticate?client_id=' + clientID + '&response_type=token&redirect_uri=' + redirectURI;
     res.redirect(get_oauth);
@@ -147,13 +142,22 @@ router.get('/get/users', function(req, res){
     request.post({url: elasticSearchURI, json: selectAll}, function(error, response, body) {
 
         var arr = body.hits.hits; // this is an array
-        console.log(arr);
         res.send(arr);
-
     });
-
 
 });
 
+router.get('/get/locations', function(req, res){
+
+    var elasticSearchURI = 'http://localhost:9200/locations/location/_search';
+    var selectAll = {'query':{'match_all':{}}};
+
+    request.post({url: elasticSearchURI, json: selectAll}, function(error, response, body) {
+
+        var arr = body.hits.hits; // this is an array
+        res.send(arr);
+    });
+
+});
 
 module.exports = router;
