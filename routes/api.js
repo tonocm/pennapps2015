@@ -59,14 +59,14 @@ router.get('/get/location/photos', function(req, res){
 
         request(req_url, function(error, response, body) {
 
-            ret_json = JSON.parse(body);
-            console.log(ret_json.response.venues[0]);
+            var ret_json = JSON.parse(body);
+            var first_venue = JSON.parse(ret_json.response.venues[0]);
 
-            if (ret_json.response.venues[0].id === undefined){
+            if (first_venue.id === undefined){
                 res.send('No results found. Please try again');
             }
             else{
-                var photo_url = 'https://api.foursquare.com/v2/venues/photos' + body.venues[0].id + '?oauth_token=' + accessToken + '&v=20150905';
+                var photo_url = 'https://api.foursquare.com/v2/venues/photos' + first_venue.id + '?oauth_token=' + accessToken + '&v=20150905';
 
                 request(photo_url, function(error, response, body) {
                     res.json(JSON.parse(body));
