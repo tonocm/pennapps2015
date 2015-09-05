@@ -27,7 +27,7 @@ router.get('/get/venue', function(req, res) {
         var foursquareRequest = 'https://api.foursquare.com/v2/venues/search?query=' + query + '&near=' + near + '&client_id= ' + clientID + '&client_secret=' + clientSecret + 'v=20150905';
 
         request(foursquareRequest, function(error, response, body) {
-          res.json(JSON.parse(body););
+          res.json(JSON.parse(body));
         });
 
         // res.send('testing');
