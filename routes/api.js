@@ -17,7 +17,7 @@ router.get('/get/db', function(req, res) {
 //    https://foursquare.com/oauth2/authenticate?client_id=TJD25UZFTFKY0Q2AYNJUDCDKIEVYY25CTMLHO4AQYDQTK2NH&response_type=code&redirect_uri=https://google.com
 
 
-    //res.send('id: ' + req.query.code);
+    res.send('id: '/* + req.query.code*/);
 });
 
 module.exports = router;
