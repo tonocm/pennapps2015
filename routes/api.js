@@ -56,7 +56,7 @@ router.get('/get/location/photos', function(req, res){
 
             var ret_json = JSON.parse(body);
 
-            if(ret_json.response.venues.length === 0){
+            if(ret_json.response.venues === undefined){
                 res.send('No results found. Please try again');
             }
 
