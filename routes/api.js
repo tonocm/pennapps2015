@@ -59,10 +59,10 @@ router.get('/get/location/photos', function(req, res){
 
         request(req_url, function(error, response, body) {
 
-            ret_json = response;
+            ret_json = body;
             console.log(ret_json);
-            console.log(response['venues']);
-            if (response.venues[0].id === undefined){
+            console.log(body['venues']);
+            if (body.venues[0].id === undefined){
                 res.send('No results found. Please try again');
             }
             else{
