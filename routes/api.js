@@ -60,7 +60,6 @@ router.get('/get/location/photos', function(req, res){
         request(req_url, function(error, response, body) {
 
             ret_json = body;
-            console.log(ret_json);
             console.log(ret_json['response']);
             console.log(ret_json['response']['venues'][0]['id']);
             if (body.response.venues[0].id === undefined){
