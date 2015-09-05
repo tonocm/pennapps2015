@@ -76,6 +76,12 @@ router.get('/get/location/photos', function(req, res){
 
 router.get('/get/location/photos/render', function(req, res){
     var token = req.query.access_token;
+
+    var keysP = Object.keys(req.params);
+    var keysQ = Object.keys(req.query);
+    console.log(keysP);
+    console.log(keysQ);
+
     res.send('query: ' + req.query.access_token + ' params:' + req.params.access_token);
 });
 
