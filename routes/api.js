@@ -12,7 +12,12 @@ router.get('/get/properties', function(req, res) {
 });
 
 router.get('/get/db', function(req, res) {
-    res.send("working!");
+
+//    https://foursquare.com/oauth2/authenticate?client_id=TJD25UZFTFKY0Q2AYNJUDCDKIEVYY25CTMLHO4AQYDQTK2NH&response_type=code
+//    https://foursquare.com/oauth2/authenticate?client_id=TJD25UZFTFKY0Q2AYNJUDCDKIEVYY25CTMLHO4AQYDQTK2NH&response_type=code&redirect_uri=https://google.com
+
+
+    //res.send('id: ' + req.query.code);
 });
 
 module.exports = router;
