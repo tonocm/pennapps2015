@@ -96,6 +96,7 @@ router.get('/get/location/photos/render', function(req, res){
 });
 
 router.post('/post/location', function(req, res){
+    console.log(req.body.name);
     res.send(req.body.name);
 });
 
