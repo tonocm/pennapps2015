@@ -145,8 +145,9 @@ router.get('/get/users', function(req, res){
     var selectAll = '{"query":{"match_all":{}}}';
 
     request({url: elasticSearchURI, json: selectAll}, function(error, response, body) {
-
-        res.send(body);
+        console.log(response);
+        console.log(body);
+        res.json(JSON.parse(body));
 
     });
 
