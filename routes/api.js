@@ -55,23 +55,27 @@ router.get('/get/location/photos', function(req, res){
         request(req_url, function(error, response, body) {
 
             var ret_json = JSON.parse(body);
-            var first_venue = ret_json.response.venues[0];
 
-            if (first_venue.id === undefined){
+            if(ret_json.response.venues === undefined){
                 res.send('No results found. Please try again');
             }
+
             else{
+
+                var first_venue = ret_json.response.venues[0];
                 var photo_url = 'https://api.foursquare.com/v2/venues/' + first_venue.id + '/photos?oauth_token=' + accessToken + '&v=20150905';
 
                 request(photo_url, function(error, response, body) {
 
                     //var bod = JSON.parse(body);
                     var items = JSON.parse(body).response.photos.items;
-                    var outie = '';
+                    // var outie = '';
+                    var outie = [];
                     var samplePhoto = '';
                     for(i=0; i < items.length; i++){
                         samplePhoto = items[i].prefix + items[i].width + 'x' + items[i].height + items[i].suffix;
-                        outie = outie + '<img src=' + samplePhoto + ' height=' + items[i].height + ' width=' + items[i].width + '>\n';
+                        outie.push(samplePhoto);
+                        // outie = outie + '<img src=' + samplePhoto + ' height=' + items[i].height + ' width=' + items[i].width + '>\n';
                     }
 
                     res.send(outie);
