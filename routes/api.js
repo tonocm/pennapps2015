@@ -69,7 +69,13 @@ router.get('/get/location/photos', function(req, res){
                 var photo_url = 'https://api.foursquare.com/v2/venues/' + first_venue.id + '/photos?oauth_token=' + accessToken + '&v=20150905';
 
                 request(photo_url, function(error, response, body) {
-                    res.json(JSON.parse(body));
+
+                    //var bod = JSON.parse(body);
+                    var items = JSON.parse(body).response.photos.items;
+
+                    var samplePhoto = items[0].prefix + items[0].width + 'x' + items[0].height + items[0].suffix;
+                    res.redirect(samplePhoto);
+                    //res.json(JSON.parse(body));
                 });
 //                res.json(JSON.parse(body));
             }
