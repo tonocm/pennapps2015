@@ -70,13 +70,13 @@ router.get('/locations/:name/relationships/nearby/:near/photos', function(req, r
       var venues = fsq.data.response.venues;
       console.log(venues);
 
-      if(!fsq.response.venues){
+      if(venues === undefined){
         return res.json({
           data: []
         });
       }
 
-      request('https://api.foursquare.com/v2/venues/' + fsq.response.venues[0].id + '/photos?oauth_token=' + accessToken + '&v=20150905', function(error, response, body) {
+      request('https://api.foursquare.com/v2/venues/' + venues[0].id + '/photos?oauth_token=' + accessToken + '&v=20150905', function(error, response, body) {
         var items = JSON.parse(body).response.photos.items;
 
         var outie = [];
