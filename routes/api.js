@@ -105,6 +105,9 @@ router.get('/users/:username', function(req, res) {
   return request.post({
     url: url_req, json : JSON.stringify(json_req)
   }, function(error, response, body) {
+
+    console.log(response);
+
     if (!body.error) {
       console.log(response);
       res.json({
