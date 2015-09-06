@@ -15,7 +15,8 @@
     "request": "*",
     "jsonwebtoken": "*",
     "node-env-file": "*",
-    "jade": "*"
+    "jade": "*",
+    "forever" : "*"
   },
   "devDependencies": {
     "nodemon": "^1.4.1"
