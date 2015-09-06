@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-curl -XPOST $ELASTICSEARCH_URL'/users/user' -d '
+curl -XPOST $ELASTICSEARCH_URL.'/users/user' -d '
 {
     "first_name":"Antonio",
     "last_name":"Cardenas",
@@ -14,7 +14,7 @@ curl -XPOST $ELASTICSEARCH_URL'/users/user' -d '
 }
 '
 
-curl -XPUT $ELASTICSEARCH_URL'/users/_mapping/user' -d '
+curl -XPUT $ELASTICSEARCH_URL.'/users/_mapping/user' -d '
 {
     "user" : {
         "properties" : {
@@ -32,7 +32,7 @@ curl -XPUT $ELASTICSEARCH_URL'/users/_mapping/user' -d '
 }
 '
 
-curl -XPOST $ELASTICSEARCH_URL'/locations/location' -d '
+curl -XPOST $ELASTICSEARCH_URL.'/locations/location' -d '
 {
     "lat": "39.901201",
     "long": "-75.171979",
@@ -46,7 +46,7 @@ curl -XPOST $ELASTICSEARCH_URL'/locations/location' -d '
 }
 '
 
-curl -XPUT $ELASTICSEARCH_URL'/locations/_mapping/location' -d '
+curl -XPUT $ELASTICSEARCH_URL.'/locations/_mapping/location' -d '
 {
     "location" : {
         "properties" : {
