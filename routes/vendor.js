@@ -19,24 +19,22 @@ router.get('/vendor/relationships/authentication', function(req, res) {
  */
 router.get('/locations/:name/relationships/nearby/:near', function(req, res) {
 
-    console.log(req.params.name);
-
-    if (!req.query.name) {
+    if (!req.params.name) {
       res.status(400);
       return res.json({
         error: 'Variable `name` not passed.'
       });
     }
 
-    if (!req.query.near) {
+    if (!req.params.near) {
       res.status(400);
       return res.json({
         error: 'Variable `near` not passed.'
       });
     }
 
-    var name = req.query.name;
-    var near = req.query.near;
+    var name = req.params.name;
+    var near = req.params.near;
 
     request('https://api.foursquare.com/v2/venues/search?query=' + name + '&near=' + near + '&client_id= ' + clientID + '&client_secret=' + clientSecret + 'v=20150905', function(error, response, body) {
       res.json({
@@ -48,15 +46,15 @@ router.get('/locations/:name/relationships/nearby/:near', function(req, res) {
 /**
  *
  */
-router.get('/locations/:name/relationships/photos', function(req, res){
-    if (req.query.name === undefined) {
+router.get('/locations/:name/:near/relationships/photos', function(req, res){
+    if (req.params.name === undefined) {
       res.status(400);
       return res.json({
         error: 'Variable `name` not passed.'
       });
     }
 
-    if (req.query.near === undefined) {
+    if (req.params.near === undefined) {
       res.status(400);
       return res.json({
         error: 'Variable `near` not passed.'
