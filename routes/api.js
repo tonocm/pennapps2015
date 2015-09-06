@@ -210,15 +210,12 @@ router.get('/locations/:id', function(req, res) {
   return request(ELASTICSEARCH + '/locations/location/' + req.params.id, function(error, response, body) {
     if (!body.error) {
 
-      console.log((JSON.parse(body))._source);
+      console.log();
 
       res.json({
-        data: body._source(function (location) {
-          var data = location._source;
-          var id = location._id;
-
+        data: (JSON.parse(body))._source.map(function (location) {
           return {
-            id: id,
+            id: req.params.id,
             type: 'locations',
             attributes: {
               title: data.title,
@@ -233,6 +230,7 @@ router.get('/locations/:id', function(req, res) {
           };
         })
       });
+
     } else {
       res.status(500);
       res.json({
