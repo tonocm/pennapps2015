@@ -50,21 +50,21 @@ router.get('/locations/:name/relationships/nearby/:near/photos', function(req, r
     if (req.params.name === undefined) {
       res.status(400);
       return res.json({
-        error: 'Variable `name` not passed.'
+        error: 'Input url: /locations/:name/relationships/nearby/:near/photos'
       });
     }
 
     if (req.params.near === undefined) {
       res.status(400);
       return res.json({
-        error: 'Variable `near` not passed.'
+        error: 'Input url: /locations/:name/relationships/nearby/:near/photos'
       });
     }
 
     var name = req.query.name;
     var near = req.query.near;
 
-    request('http://pennapps2015.cloudapp.net:3000/vendor/?name=' + name + '&near=' + near, function(error, response, body) {
+    request('http://pennapps2015.cloudapp.net:3000/vendor/locations/' + name + '/nearby/' + near, function(error, response, body) {
 
       console.log(body);
 
