@@ -98,11 +98,12 @@ router.get('/users/:username', function(req, res) {
   }
 
   console.log(json_req);
-  
+
   return request.post({
     url: ELASTICSEARCH + '/users/user/_search', json : json_req
 
   }, function(error, response, body) {
+    console.log(error);
     if (!body.error) {
       res.json({
         data: body.hits.hits.map(function (user) {
