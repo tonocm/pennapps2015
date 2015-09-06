@@ -18,8 +18,9 @@ app.use(parser.urlencoded({ extended: true }));
 app.use(parser.json());
 
 // Setup routes
-app.use('/v1', require('./routes/api'));
+app.use('/v1', require('./routes/v1'));
 app.use('/v1/vendor', require('./routes/vendor'));
+app.use('/v1/search', require('./routes/search'));
 
 /// Catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -49,6 +50,6 @@ app.use(function(err, req, res, next) {
 });
 
 // Start the server
-var server = app.listen(process.env.PORT || 3000, function () {
+var server = app.listen(process.env.PORT || 80, function () {
   console.log('Listening on port ' + server.address().port);
 });
