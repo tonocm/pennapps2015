@@ -65,6 +65,9 @@ router.get('/locations/:name/relationships/nearby/:near/photos', function(req, r
     var near = req.query.near;
 
     request('http://pennapps2015.cloudapp.net:3000/vendor/?name=' + name + '&near=' + near, function(error, response, body) {
+
+      console.log(body);
+
       var fsq = JSON.parse(body);
 
       if(!fsq.response.venues){
