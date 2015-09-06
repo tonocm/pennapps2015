@@ -2,10 +2,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "postinstall": "npm run seed",
     "start": "node app.js",
-    "development": "`npm bin`/nodemon app.js",
-    "seed": "./bin/seed"
+    "development": "`npm bin`/nodemon app.js"
   },
   "dependencies": {
     "body-parser": "~1.0.0",
