@@ -18,6 +18,9 @@ router.get('/vendor/relationships/authentication', function(req, res) {
  *
  */
 router.get('/locations/:name/relationships/nearby/:near', function(req, res) {
+
+    console.log(req.param);
+
     if (!req.query.name) {
       res.status(400);
       return res.json({
