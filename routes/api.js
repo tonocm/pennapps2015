@@ -87,29 +87,19 @@ router.post('/users', function(req, res) {
  * Get all users.
  */
 router.get('/users/:username', function(req, res) {
+
+  var username = req.params.username;
+
+    if (username === undefined) {
+      var json_req = {'query': {'match_all': {}}}
+    }
+    else {
+      var json_req = {'query': {'match': {'username': username}}}
+    }
+
+
   return request.post({
-
-  console.log(req.params.username);
-  var uname = req.params.username;
-
-  if (uname === undefined) {
-
-    url: ELASTICSEARCH + '/users/user/_search',
-        json: {
-          'query': {
-            'match_all': {}
-          }
-        }
-  }
-  else {
-
-    url: ELASTICSEARCH + '/users/user/_search',
-          json: {
-            'query': {
-              'match': {'username': uname}
-            }
-          }
-  }
+    url: ELASTICSEARCH + '/users/user/_search', json : json_req
 
   }, function(error, response, body) {
     if (!body.error) {
