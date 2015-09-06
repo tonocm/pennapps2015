@@ -203,4 +203,41 @@ router.get('/locations', function(req, res) {
   });
 });
 
+/**
+ * Get specifc location.
+ */
+router.get('/locations/:id', function(req, res) {
+  return request.post({url: ELASTICSEARCH + '/locations/location/_search', json: {"query": {"filtered" : {"query" : {'match_all': {}},"filter" : {"term" : { "id" : req.params.id }}}}}}, function(error, response, body) {
+    if (!body.error) {
+      res.json({
+        data: body.hits.hits.map(function (location) {
+          var data = location._source;
+          var id = location._id;
+
+          return {
+            id: id,
+            type: 'locations',
+            attributes: {
+              title: data.title,
+              description: data.description,
+              photos: data.photos,
+              lat: data.lat,
+              long: data.long,
+              features: data.attributes,
+              tags: data.tags,
+              price: data.price
+            }
+          };
+        })
+      });
+    } else {
+      res.status(500);
+      res.json({
+        message: 'An error occured.',
+        error: body.error
+      });
+    }
+  });
+});
+
 module.exports = router;
