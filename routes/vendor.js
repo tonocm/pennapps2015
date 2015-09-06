@@ -68,9 +68,8 @@ router.get('/locations/:name/relationships/nearby/:near/photos', function(req, r
 
       var fsq = JSON.parse(body);
       var venues = fsq.data.response.venues;
-      console.log(venues.length);
-      console.log(venues === []);
-      if(venues === []){
+      
+      if(venues.length === 0){
         res.json({
           data: []
         });
