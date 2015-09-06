@@ -40,3 +40,77 @@ curl -XGET 'http://localhost:9200/locations/location/_search' -d '
 '
 
 curl -XGET 'http://localhost:9200/locations/location/AU-ex1VXrAlAxICnGkKX
+
+curl -XGET 'http://localhost:9200/locations/location/_search' -d '
+{
+"query":
+{
+    "terms" : {
+        "tags" : [ "fancy", "outdoors" ],
+        "minimum_should_match" : 1
+    }
+}
+}
+'
+
+
+
+
+curl -XGET 'http://localhost:9200/locations/location/_search' -d '
+{
+  "query": {
+    "bool": {
+      "should": [
+        {
+          "term": {
+            "status": {
+              "value": "urgent",
+              "boost": 2.0
+            }
+          }
+        },
+        {
+          "term": {
+            "status": "normal"
+          }
+        }
+      ]
+    }
+  }
+}
+'
+
+curl -XGET 'http://localhost:9200/locations/location/_search' -d '
+{
+    "multi_match": {
+        "query":                "fancy",
+        "type":                 "locations",
+        "fields":               [ "tags", "attributes" ],
+        "tie_breaker":          0.3,
+        "minimum_should_match": "30%"
+    }
+}
+'
+
+
+
+
+
+
+curl -XGET 'http://localhost:9200/locations/location/_search?q=fancy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

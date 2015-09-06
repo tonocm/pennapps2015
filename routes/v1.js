@@ -7,7 +7,6 @@ var User = require('../models/user');
 var Location = require('../models/location');
 
 var ELASTICSEARCH = 'http://localhost:9200';
-//var ELASTICSEARCH = process.env.ELASTICSEARCH_URL;
 
 /**
  * Show the API URLs.
