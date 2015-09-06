@@ -89,13 +89,13 @@ router.post('/users', function(req, res) {
 router.get('/users/:username', function(req, res) {
 
   var username = req.params.username;
-
-    if (username === undefined) {
+  console.log(req.params.username);
+  if (username === undefined) {
       var json_req = {'query': {'match_all': {}}}
-    }
-    else {
+  }
+  else {
       var json_req = {'query': {'match': {'username': username}}}
-    }
+  }
 
 
   return request.post({
