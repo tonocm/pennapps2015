@@ -101,9 +101,8 @@ router.get('/users/:username', function(req, res) {
   var req_url = ELASTICSEARCH + '/users/user/_search';
   console.log(req_url);
   return request.post({
-    url: url_req, json : json_req
+    url: url_req, json : JSON.stringify(json_req)
   }, function(error, response, body) {
-    console.log(error);
     if (!body.error) {
       res.json({
         data: body.hits.hits.map(function (user) {
