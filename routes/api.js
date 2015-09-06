@@ -94,7 +94,7 @@ router.get('/users/:username', function(req, res) {
       var json_req = {'query': {'match_all': {}}};
   }
   else {
-      var json_req = {"query": {"filtered" : {"query" : {'match_all': {}},"filter" : {"term" : { "username" : username }}}}};
+      var json_req = {'query': {'filtered' : {'query' : {'match_all': {}},'filter' : {'term' : { 'username' : username }}}}};
   }
 
   console.log(json_req);
@@ -102,9 +102,8 @@ router.get('/users/:username', function(req, res) {
   var req_url = ELASTICSEARCH + '/users/user/_search';
 
   console.log(req_url);
-  return request.post({
-    url: url_req, json : json_req
-  }, function(error, response, body) {
+
+  return request.post({url: url_req, json: json_req}, function(error, response, body) {
 
     console.log(response);
 
