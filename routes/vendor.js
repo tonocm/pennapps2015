@@ -75,20 +75,21 @@ router.get('/locations/:name/relationships/nearby/:near/photos', function(req, r
           data: []
         });
       }
+      else{
+          request('https://api.foursquare.com/v2/venues/' + venues[0].id + '/photos?oauth_token=' + accessToken + '&v=20150905', function(error, response, body) {
+            var items = JSON.parse(body).response.photos.items;
 
-      request('https://api.foursquare.com/v2/venues/' + venues[0].id + '/photos?oauth_token=' + accessToken + '&v=20150905', function(error, response, body) {
-        var items = JSON.parse(body).response.photos.items;
+            var outie = [];
+            var samplePhoto = '';
 
-        var outie = [];
-        var samplePhoto = '';
+            for(i=0; i < items.length; i++){
+              samplePhoto = items[i].prefix + items[i].width + 'x' + items[i].height + items[i].suffix;
+              outie.push(samplePhoto);
+            }
 
-        for(i=0; i < items.length; i++){
-          samplePhoto = items[i].prefix + items[i].width + 'x' + items[i].height + items[i].suffix;
-          outie.push(samplePhoto);
-        }
-
-        res.send(outie);
-      });
+            res.send(outie);
+          });
+      }
     });
 });
 
