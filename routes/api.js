@@ -103,13 +103,12 @@ router.get('/users/:username', function(req, res) {
 
   console.log(req_url);
   return request.post({
-    url: url_req, json : JSON.stringify(json_req)
+    url: url_req, json : json_req
   }, function(error, response, body) {
 
     console.log(response);
 
     if (!body.error) {
-      console.log(response);
       res.json({
         data: body.hits.hits.map(function (user) {
           var data = user._source;
