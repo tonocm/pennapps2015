@@ -6,7 +6,8 @@ var router = express.Router();
 var User = require('../models/user');
 var Location = require('../models/location');
 
-var ELASTICSEARCH = process.env.ELASTICSEARCH_URL;
+var ELASTICSEARCH = 'http://localhost:9300';
+//var ELASTICSEARCH = process.env.ELASTICSEARCH_URL;
 
 /**
  * Show the API URLs.
@@ -85,14 +86,29 @@ router.post('/users', function(req, res) {
 /**
  * Get all users.
  */
-router.get('/users', function(req, res) {
+router.get('/users/:username', function(req, res) {
   return request.post({
+
+
+  if(username === undefined){
+
     url: ELASTICSEARCH + '/users/user/_search',
-    json: {
-      'query': {
-        'match_all': {}
-      }
-    }
+        json: {
+          'query': {
+            'match_all': {}
+          }
+        }
+  }
+  else {
+
+    url: ELASTICSEARCH + '/users/user/_search',
+          json: {
+            'query': {
+              'match': {'username': username}
+            }
+          }
+  }
+
   }, function(error, response, body) {
     if (!body.error) {
       res.json({
