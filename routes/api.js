@@ -210,26 +210,9 @@ router.get('/locations/:id', function(req, res) {
   return request(ELASTICSEARCH + '/locations/location/' + req.params.id, function(error, response, body) {
     if (!body.error) {
 
-    var json_body = JSON.parse(body);
+    var json_body = JSON.parse(body)._source;
 
-      res.json({
-        data: json_body._source.map(function (location) {
-          return {
-            id: req.params.id,
-            type: 'locations',
-            attributes: {
-              title: data.title,
-              description: data.description,
-              photos: data.photos,
-              lat: data.lat,
-              long: data.long,
-              features: data.attributes,
-              tags: data.tags,
-              price: data.price
-            }
-          };
-        })
-      });
+      res.json(json_body);
 
     } else {
       res.status(500);
