@@ -22,7 +22,7 @@ router.get('/', function(req, res) {
 router.get('/locations', function(req, res){
   request('http://localhost:9200/locations/location/_search?q=' + req.query.q, function(error, response, body){
 
-    res.json(JSON.parse(body).hits.hits);
+    res.json({'data': JSON.parse(body).hits.hits});
 
   });
 });
@@ -30,7 +30,7 @@ router.get('/locations', function(req, res){
 router.get('/users', function(req, res){
   request('http://localhost:9200/users/user/_search?q=' + req.query.q, function(error, response, body){
 
-    res.json(JSON.parse(body).hits.hits);
+    res.json({'data': JSON.parse(body).hits.hits});
 
   });
 });
