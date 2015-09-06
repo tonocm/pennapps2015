@@ -207,7 +207,7 @@ router.get('/locations', function(req, res) {
  * Get specifc location.
  */
 router.get('/locations/:id', function(req, res) {
-  return request(ELASTICSEARCH + '/locations/location/' + res.params.id, function(error, response, body) {
+  return request(ELASTICSEARCH + '/locations/location/' + req.params.id, function(error, response, body) {
     if (!body.error) {
       res.json({
         data: body.hits.hits.map(function (location) {
