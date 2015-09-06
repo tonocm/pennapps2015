@@ -89,8 +89,9 @@ router.post('/users', function(req, res) {
 router.get('/users/:username', function(req, res) {
   return request.post({
 
+  var username = req.params.username;
 
-  if(req.params.username === undefined){
+  if (username === undefined) {
 
     url: ELASTICSEARCH + '/users/user/_search',
         json: {
@@ -104,7 +105,7 @@ router.get('/users/:username', function(req, res) {
     url: ELASTICSEARCH + '/users/user/_search',
           json: {
             'query': {
-              'match': {'username': req.params.username}
+              'match': {'username': username}
             }
           }
   }
