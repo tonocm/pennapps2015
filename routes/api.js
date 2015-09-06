@@ -97,9 +97,11 @@ router.get('/users/:username', function(req, res) {
       var json_req = {"query": {"filtered" : {"query" : {'match_all': {}},"filter" : {"term" : { "username" : username }}}}};
   }
 
-  console.log(JSON.parse(json_req));
+  console.log(json_req);
+
   var req_url = ELASTICSEARCH + '/users/user/_search';
-  //console.log(req_url);
+
+  console.log(req_url);
   return request.post({
     url: url_req, json : JSON.stringify(json_req)
   }, function(error, response, body) {
