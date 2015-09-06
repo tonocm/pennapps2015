@@ -215,7 +215,7 @@ router.get('/locations/:id', function(req, res) {
       res.json({data: [{
                 'id' : req.params.id,
                 'type': 'locations',
-                'attributes': {json_body}
+                'attributes': json_body
                 }]});
 
     } else {
