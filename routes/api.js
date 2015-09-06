@@ -210,10 +210,10 @@ router.get('/locations/:id', function(req, res) {
   return request(ELASTICSEARCH + '/locations/location/' + req.params.id, function(error, response, body) {
     if (!body.error) {
 
-      console.log();
+    var json_body = JSON.parse(body);
 
       res.json({
-        data: (JSON.parse(body))._source.map(function (location) {
+        data: json_body._source.map(function (location) {
           return {
             id: req.params.id,
             type: 'locations',
