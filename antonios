@@ -15,3 +15,28 @@ curl -XGET 'http://localhost:9200/users/user/_search' -d '
         }
     }
 '
+
+curl -XGET 'http://localhost:9200/locations/location/_search' -d '
+    {"query": {
+            "filtered" : {
+                "query" : {'match_all': {}},
+                "filter" : {
+                    "term" : { "id" : "AU-ex1VXrAlAxICnGkKX" }
+                }
+            }
+        }
+    }
+'
+
+curl -XGET 'http://localhost:9200/locations/location/_search' -d '
+{
+    "query" : {
+        "ids" : {
+            "type" : "locations",
+            "values" : ['AU-ex1VXrAlAxICnGkKX']
+        }
+    }
+}
+'
+
+curl -XGET 'http://localhost:9200/locations/location/AU-ex1VXrAlAxICnGkKX
