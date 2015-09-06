@@ -71,7 +71,7 @@ router.get('/locations/:name/relationships/nearby/:near/photos', function(req, r
       console.log(venues);
 
       if(venues === undefined){
-        return res.json({
+        res.json({
           data: []
         });
       }
