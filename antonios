@@ -105,10 +105,7 @@ curl -XGET 'http://localhost:9200/locations/location/_search?q=fancy
 
 
 
-
-
-
-
+curl -XDELETE 'http://localhost:9200/locations/location/AU-ie96Gxbq9tsddoOc0
 
 
 
