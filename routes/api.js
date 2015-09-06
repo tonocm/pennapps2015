@@ -120,9 +120,11 @@ router.get('/users', function(req, res) {
   });
 });
 
-
+/**
+ * Get specific user.
+ */
 router.get('/users/:username', function(req, res) {
-  return request.post({url: ELASTICSEARCH + '/users/user/_search', json: {"query": {"filtered" : {"query" : {'match_all': {}},"filter" : {"term" : { "username" : "tonocm" }}}}}}, function(error, response, body) {
+  return request.post({url: ELASTICSEARCH + '/users/user/_search', json: {"query": {"filtered" : {"query" : {'match_all': {}},"filter" : {"term" : { "username" : req.params.username }}}}}}, function(error, response, body) {
     if (!body.error) {
       res.json({
         data: body.hits.hits.map(function (user) {
