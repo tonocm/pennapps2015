@@ -94,7 +94,8 @@ router.get('/users/:username', function(req, res) {
       var json_req = {'query': {'match_all': {}}};
   }
   else {
-      var json_req = {'query': {'filtered' : {'query' : {'match_all': {}},'filter' : {'term' : { 'username' : username }}}}};
+      var json_req = {'query': {'match_all': {}}};
+      //var json_req = {'query': {'filtered' : {'query' : {'match_all': {}},'filter' : {'term' : { 'username' : username }}}}};
   }
 
   console.log(json_req);
