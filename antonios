@@ -1,0 +1,17 @@
+curl -XGET 'http://localhost:9200/users/user/_search' -d '
+
+    {'query': {'match': {'username': username}}}
+'
+
+
+curl -XGET 'http://localhost:9200/users/user/_search' -d '
+    {"query": {
+            "filtered" : {
+                "query" : {'match_all': {}},
+                "filter" : {
+                    "term" : { "username" : "tonocm" }
+                }
+            }
+        }
+    }
+'
