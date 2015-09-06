@@ -46,8 +46,8 @@
       <file leaf-file-name="vendor.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/vendor.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5769231">
-              <caret line="71" column="54" selection-start-line="71" selection-start-column="54" selection-end-line="71" selection-end-column="54" />
+            <state vertical-scroll-proportion="0.71153843">
+              <caret line="92" column="4" selection-start-line="92" selection-start-column="4" selection-end-line="92" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -518,8 +518,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/vendor.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5769231">
-          <caret line="71" column="54" selection-start-line="71" selection-start-column="54" selection-end-line="71" selection-end-column="54" />
+        <state vertical-scroll-proportion="0.71153843">
+          <caret line="92" column="4" selection-start-line="92" selection-start-column="4" selection-end-line="92" selection-end-column="4" />
           <folding />
         </state>
       </provider>

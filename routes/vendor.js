@@ -66,30 +66,30 @@ router.get('/locations/:name/relationships/nearby/:near/photos', function(req, r
 
     request('http://pennapps2015.cloudapp.net:3000/v1/vendor/locations/' + name + '/relationships/nearby/' + near, function(error, response, body) {
 
-      var fsq = JSON.parse(body);
-      var venues = fsq.data.response.venues;
+        var fsq = JSON.parse(body);
+        var venues = fsq.data.response.venues;
 
-      if (venues === undefined || venues.length === 0) {
-        res.json({
-          data: []
-        });
-      }
+        if (venues === undefined || venues.length === 0) {
+            res.json({
+              data: []
+            });
+        }
 
-      else{
-          request('https://api.foursquare.com/v2/venues/' + venues[0].id + '/photos?oauth_token=' + accessToken + '&v=20150905', function(error, response, body) {
-            var items = JSON.parse(body).response.photos.items;
+        else{
+            request('https://api.foursquare.com/v2/venues/' + venues[0].id + '/photos?oauth_token=' + accessToken + '&v=20150905', function(error, response, body) {
+              var items = JSON.parse(body).response.photos.items;
 
-            var outie = [];
-            var samplePhoto = '';
+              var outie = [];
+              var samplePhoto = '';
 
-            for(i=0; i < items.length; i++){
-              samplePhoto = items[i].prefix + items[i].width + 'x' + items[i].height + items[i].suffix;
-              outie.push(samplePhoto);
-            }
+              for(i=0; i < items.length; i++){
+                samplePhoto = items[i].prefix + items[i].width + 'x' + items[i].height + items[i].suffix;
+                outie.push(samplePhoto);
+              }
 
-            res.send(outie);
-          });
-      }
+              res.send(outie);
+            });
+        }
     });
 });
 
