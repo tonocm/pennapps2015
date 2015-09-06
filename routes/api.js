@@ -212,11 +212,11 @@ router.get('/locations/:id', function(req, res) {
 
     var json_body = JSON.parse(body)._source;
 
-      res.json({data: [
+      res.json({data: [{
                 'id' : req.params.id,
                 'type': 'locations',
                 'attributes': {json_body}
-                ]});
+                }]});
 
     } else {
       res.status(500);
