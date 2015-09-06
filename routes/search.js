@@ -21,8 +21,8 @@ router.get('/', function(req, res) {
 
 router.get('/locations', function(req, res){
   request('http://localhost:9200/locations/location/_search?q=' + req.query.q, function(error, response, body){
-
-    res.json(JSON.parse(response));
+  
+    res.json(JSON.parse(body));
 
   });
 });
@@ -30,7 +30,7 @@ router.get('/locations', function(req, res){
 router.get('/users', function(req, res){
   request('http://localhost:9200/users/user/_search?q=' + req.query.q, function(error, response, body){
 
-    res.json(JSON.parse(response));
+    res.json(JSON.parse(body));
 
   });
 });
