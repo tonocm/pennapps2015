@@ -1,7 +1,7 @@
 var path = require('path');
 var env = require('node-env-file');
 var express = require('express');
-var logger = require('morgan');
+var morgan = require('morgan');
 var parser = require('body-parser');
 var cors = require('cors');
 
@@ -12,7 +12,8 @@ var app = express();
 
 app.set('json spaces', 2);
 app.use(cors());
-app.use(logger('dev'));
+app.use(morgan('combined'))
+app.use(parser.urlencoded({ extended: true }));
 app.use(parser.json());
 
 // Setup routes
