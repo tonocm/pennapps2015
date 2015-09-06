@@ -61,12 +61,12 @@ router.get('/locations/:name/relationships/nearby/:near/photos', function(req, r
       });
     }
 
-    var name = req.query.name;
-    var near = req.query.near;
+    var name = req.params.name;
+    var near = req.params.near;
 
     request('http://pennapps2015.cloudapp.net:3000/v1/vendor/locations/' + name + '/relationships/nearby/' + near, function(error, response, body) {
 
-      console.log(response);
+      console.log(body);
 
       var fsq = JSON.parse(body);
 
