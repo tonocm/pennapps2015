@@ -6,7 +6,7 @@ var router = express.Router();
 var User = require('../models/user');
 var Location = require('../models/location');
 
-var ELASTICSEARCH = 'http://localhost:9300';
+var ELASTICSEARCH = 'http://localhost:9200';
 //var ELASTICSEARCH = process.env.ELASTICSEARCH_URL;
 
 /**
