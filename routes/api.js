@@ -4,6 +4,9 @@ var jwt = require('jsonwebtoken');
 var router = express.Router();
 
 var User = require('../models/user');
+var Location = require('../models/location');
+
+var ELASTICSEARCH = process.env.ELASTICSEARCH_URL;
 
 /**
  * Show the API URLs.
@@ -22,8 +25,6 @@ router.get('/', function(req, res) {
  * Create a new location.
  */
 router.post('/locations', function(req, res){
-  var elasticSearchURI = 'http://localhost:9200/locations/location/';
-
   var location = {
     lat: req.body.lat,
     long: req.body.long,
@@ -37,7 +38,7 @@ router.post('/locations', function(req, res){
   };
 
   request.post({
-    url: elasticSearchURI,
+    url: ELASTICSEARCH + '/locations/location/',
     json: location
   }, function(error, response, body) {
     res.json({
@@ -54,8 +55,6 @@ router.post('/locations', function(req, res){
  * Create a new user.
  */
 router.post('/users', function(req, res) {
-  var elasticSearchURI = 'http://localhost:9200/users/user/';
-
   var user = {
     first_name: req.body.first_name,
     last_name: req.body.last_name,
@@ -70,7 +69,7 @@ router.post('/users', function(req, res) {
 
   // Save the user in ES
   request.post({
-    url: elasticSearchURI,
+    url: ELASTICSEARCH + '/users/user/',
     json: user
   }, function(error, response, body) {
     res.json({
@@ -87,10 +86,8 @@ router.post('/users', function(req, res) {
  * Get all users.
  */
 router.get('/users', function(req, res) {
-  var elasticSearchURI = 'http://localhost:9200/users/user/_search';
-
   return request.post({
-    url: elasticSearchURI,
+    url: ELASTICSEARCH + '/users/user/_search',
     json: {
       'query': {
         'match_all': {}
@@ -132,10 +129,8 @@ router.get('/users', function(req, res) {
  * Get all locations.
  */
 router.get('/locations', function(req, res) {
-  var elasticSearchURI = 'http://localhost:9200/locations/location/_search';
-
   return request.post({
-    url: elasticSearchURI,
+    url: ELASTICSEARCH + '/locations/location/_search',
     json: {
       'query': {
         'match_all': {}

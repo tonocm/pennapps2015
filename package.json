@@ -14,7 +14,8 @@
     "mongoose": "^4.1.5",
     "morgan": "~1.0.0",
     "request": "*",
-    "jsonwebtoken": "*"
+    "jsonwebtoken": "*",
+    "node-env-file": "*"
   },
   "devDependencies": {
     "nodemon": "^1.4.1"
