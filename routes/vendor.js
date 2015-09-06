@@ -22,14 +22,14 @@ router.get('/locations/:name/relationships/nearby/:near', function(req, res) {
     if (!req.params.name) {
       res.status(400);
       return res.json({
-        error: 'Variable `name` not passed.'
+        error: 'Submit: /locations/:name/relationships/nearby/:near'
       });
     }
 
     if (!req.params.near) {
       res.status(400);
       return res.json({
-        error: 'Variable `near` not passed.'
+        error: 'Submit: /locations/:name/relationships/nearby/:near'
       });
     }
 
@@ -68,12 +68,13 @@ router.get('/locations/:name/relationships/nearby/:near/photos', function(req, r
 
       var fsq = JSON.parse(body);
       var venues = fsq.data.response.venues;
-      
-      if(venues.length === 0){
+
+      if (venues === undefined || venues.length === 0)) {
         res.json({
           data: []
         });
       }
+
       else{
           request('https://api.foursquare.com/v2/venues/' + venues[0].id + '/photos?oauth_token=' + accessToken + '&v=20150905', function(error, response, body) {
             var items = JSON.parse(body).response.photos.items;
