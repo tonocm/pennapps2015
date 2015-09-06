@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-curl -XPUT 'http://localhost:9200/locations/_mapping/location' -d '
+curl -XPUT $ELASTICSEARCH_URL'/locations/_mapping/location' -d '
 {
     "location" : {
         "properties" : {
@@ -18,7 +18,7 @@ curl -XPUT 'http://localhost:9200/locations/_mapping/location' -d '
 }
 '
 
-curl -XPUT 'http://localhost:9200/users/_mapping/user' -d '
+curl -XPUT $ELASTICSEARCH_URL'/users/_mapping/user' -d '
 {
     "user" : {
         "properties" : {
@@ -36,7 +36,7 @@ curl -XPUT 'http://localhost:9200/users/_mapping/user' -d '
 }
 '
 
-curl -XPOST 'http://localhost:9200/locations/location' -d '
+curl -XPOST $ELASTICSEARCH_URL'/locations/location' -d '
 {
     "lat": "39.901201",
     "long": "-75.171979",
@@ -50,7 +50,7 @@ curl -XPOST 'http://localhost:9200/locations/location' -d '
 }
 '
 
-curl -XPOST 'http://localhost:9200/users/user' -d '
+curl -XPOST $ELASTICSEARCH_URL'/users/user' -d '
 {
     "first_name":"Antonio",
     "last_name":"Cardenas",
