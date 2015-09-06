@@ -1,24 +1,20 @@
 #!/usr/bin/env sh
 
-curl -XPUT 'http://localhost:9200/locations/_mapping/location' -d '
+curl -XPOST $ELASTICSEARCH_URL.'/users/user' -d '
 {
-    "location" : {
-        "properties" : {
-            "lat" : {"type" : "string"},
-            "long" : {"type" : "string"},
-            "title" : {"type" : "string"},
-            "description" : {"type" : "string"},
-            "username" : {"type" : "string"},
-            "photos" : {"type" : "string"},
-            "price" : {"type" : "string"},
-            "tags" : {"type" : "string"},
-            "attributes" : {"type" : "string"}
-        }
-    }
+    "first_name":"Antonio",
+    "last_name":"Cardenas",
+    "email":"tonocm94@gmail.com",
+    "phone":"5853609644",
+    "address_1":"500 Joseph C. Wilson Blvd",
+    "address_2":"CPU Box 271646",
+    "bio":"Cool guy from Mexico. Loves Coffee.",
+    "username":"tonocm",
+    "photo":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAKhAAAAJDhmNzkzNGFjLTMxZDctNGVjOC05NTRkLTQxYWY5YTNjZDQzYQ.jpg"
 }
 '
 
-curl -XPUT 'http://localhost:9200/users/_mapping/user' -d '
+curl -XPUT $ELASTICSEARCH_URL.'/users/_mapping/user' -d '
 {
     "user" : {
         "properties" : {
@@ -36,7 +32,7 @@ curl -XPUT 'http://localhost:9200/users/_mapping/user' -d '
 }
 '
 
-curl -XPOST 'http://localhost:9200/locations/location' -d '
+curl -XPOST $ELASTICSEARCH_URL.'/locations/location' -d '
 {
     "lat": "39.901201",
     "long": "-75.171979",
@@ -50,16 +46,20 @@ curl -XPOST 'http://localhost:9200/locations/location' -d '
 }
 '
 
-curl -XPOST 'http://localhost:9200/users/user' -d '
+curl -XPUT $ELASTICSEARCH_URL.'/locations/_mapping/location' -d '
 {
-    "first_name":"Antonio",
-    "last_name":"Cardenas",
-    "email":"tonocm94@gmail.com",
-    "phone":"5853609644",
-    "address_1":"500 Joseph C. Wilson Blvd",
-    "address_2":"CPU Box 271646",
-    "bio":"Cool guy from Mexico. Loves Coffee.",
-    "username":"tonocm",
-    "photo":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAKhAAAAJDhmNzkzNGFjLTMxZDctNGVjOC05NTRkLTQxYWY5YTNjZDQzYQ.jpg"
+    "location" : {
+        "properties" : {
+            "lat" : {"type" : "string"},
+            "long" : {"type" : "string"},
+            "title" : {"type" : "string"},
+            "description" : {"type" : "string"},
+            "username" : {"type" : "string"},
+            "photos" : {"type" : "string"},
+            "price" : {"type" : "string"},
+            "tags" : {"type" : "string"},
+            "attributes" : {"type" : "string"}
+        }
+    }
 }
 '

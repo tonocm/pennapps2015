@@ -119,7 +119,8 @@ router.get('/users', function(req, res) {
     } else {
       res.status(500);
       res.json({
-        error: 'An error occured.'
+        message: 'An error occured.',
+        error: body.error
       });
     }
   });
@@ -162,7 +163,8 @@ router.get('/locations', function(req, res) {
     } else {
       res.status(500);
       res.json({
-        error: 'An error occured.'
+        message: 'An error occured.',
+        error: body.error
       });
     }
   });
