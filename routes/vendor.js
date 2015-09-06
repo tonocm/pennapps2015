@@ -46,7 +46,7 @@ router.get('/locations/:name/relationships/nearby/:near', function(req, res) {
 /**
  *
  */
-router.get('/locations/:name/:near/relationships/photos', function(req, res){
+router.get('/locations/:name/relationships/nearby/:near/photos', function(req, res){
     if (req.params.name === undefined) {
       res.status(400);
       return res.json({
