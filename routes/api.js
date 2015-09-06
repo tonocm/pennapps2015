@@ -120,6 +120,43 @@ router.get('/users', function(req, res) {
   });
 });
 
+
+router.get('/users/:username', function(req, res) {
+  return request.post({url: ELASTICSEARCH + '/users/user/_search', json: {"query": {"filtered" : {"query" : {'match_all': {}},"filter" : {"term" : { "username" : "tonocm" }}}}}, function(error, response, body) {
+    if (!body.error) {
+      res.json({
+        data: body.hits.hits.map(function (user) {
+          var data = user._source;
+          var id = user._id;
+
+          return {
+            id: id,
+            type: 'users',
+            attributes: {
+              first_name: data.first_name,
+              last_name: data.last_name,
+              email: data.email,
+              address_1: data.address_1,
+              address_2: data.address_2,
+              bio: data.bio,
+              photo: data.photo,
+              username: data.username
+            }
+          };
+        })
+      });
+    } else {
+      res.status(500);
+      res.json({
+        message: 'An error occured.',
+        error: body.error
+      });
+    }
+  });
+});
+
+
+
 /**
  * Get all locations.
  */
