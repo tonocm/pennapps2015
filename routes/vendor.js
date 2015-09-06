@@ -69,7 +69,7 @@ router.get('/locations/:name/relationships/nearby/:near/photos', function(req, r
       var fsq = JSON.parse(body);
       var venues = fsq.data.response.venues;
 
-      if (venues === undefined || venues.length === 0)) {
+      if (venues === undefined || venues.length === 0) {
         res.json({
           data: []
         });
