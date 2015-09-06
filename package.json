@@ -11,10 +11,10 @@
     "cors": "^2.7.1",
     "debug": "~0.7.4",
     "express": "~4.0.0",
-    "jsonwebtoken": "^5.0.5",
     "mongoose": "^4.1.5",
     "morgan": "~1.0.0",
-    "request": "^2.61.0"
+    "request": "*",
+    "jsonwebtoken": "*"
   },
   "devDependencies": {
     "nodemon": "^1.4.1"
