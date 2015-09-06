@@ -16,7 +16,8 @@
     "morgan": "~1.0.0",
     "request": "*",
     "jsonwebtoken": "*",
-    "node-env-file": "*"
+    "node-env-file": "*",
+    "jade": "*"
   },
   "devDependencies": {
     "nodemon": "^1.4.1"

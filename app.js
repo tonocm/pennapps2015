@@ -11,6 +11,7 @@ env(__dirname + '/.env');
 var app = express();
 
 app.set('json spaces', 2);
+app.set('view engine', 'jade');
 app.use(cors());
 app.use(morgan('combined'))
 app.use(parser.urlencoded({ extended: true }));
